@@ -39,66 +39,69 @@ class Finder:
         }
 
     def get_exif_datas(self, path):
-        with open(path, "rb") as files:
-            info = {"path": path}
-            tags = None
-            try:
-                tags = exifread.process_file(files, strict=True)
-            except KeyError:
-                return
-            except Exception as e:
-                return
-                error(e)
+        try:
+            with open(path, "rb") as files:
+                info = {"path": path}
+                tags = None
+                try:
+                    tags = exifread.process_file(files, strict=True)
+                except KeyError:
+                    return
+                except Exception as e:
+                    return
+                    error(e)
 
-            if not tags:
-                return
+                if not tags:
+                    return
 
-            if tags:
-                tag_keys = tags.keys()
-                if (
-                    len(set(tag_keys) & set(config.x_and_y_list)) == 2
-                    and gps_format(str(tags["GPS GPSLongitude"])) != 0.0
-                ):
-                    for tag in sorted(tag_keys):
-                        if tag in config.show_list:
-                            info[tag.split()[-1]] = str(tags[tag]).strip()
-                    # 经纬度取值
-                    info["GPS"] = (
-                        gps_format(str(tags["GPS GPSLatitude"]))
-                        * float(
-                            1.0
-                            if str(tags.get("GPS GPSLatitudeRef", "N")) == "N"
-                            else -1.0
-                        ),
-                        gps_format(str(tags["GPS GPSLongitude"]))
-                        * float(
-                            1.0
-                            if str(tags.get("GPS GPSLongitudeRef", "E")) == "E"
-                            else -1.0
-                        ),
-                    )
-                    # 获取实体地址
-                    # info["address"] = address(info["GPS"])
-                    # 获取照片海拔高度
-                    if "GPS GPSAltitudeRef" in tag_keys:
-                        try:
-                            info["GPSAltitude"] = eval(info["GPSAltitude"])
-                        except ZeroDivisionError:
-                            info["GPSAltitude"] = 0
-                        info["GPSAltitude"] = "距%s%.2f米" % (
-                            "地面" if int(info["GPSAltitudeRef"]) == 1 else "海平面",
-                            info["GPSAltitude"],
+                if tags:
+                    tag_keys = tags.keys()
+                    if (
+                        len(set(tag_keys) & set(config.x_and_y_list)) == 2
+                        and gps_format(str(tags["GPS GPSLongitude"])) != 0.0
+                    ):
+                        for tag in sorted(tag_keys):
+                            if tag in config.show_list:
+                                info[tag.split()[-1]] = str(tags[tag]).strip()
+                        # 经纬度取值
+                        info["GPS"] = (
+                            gps_format(str(tags["GPS GPSLatitude"]))
+                            * float(
+                                1.0
+                                if str(tags.get("GPS GPSLatitudeRef", "N")) == "N"
+                                else -1.0
+                            ),
+                            gps_format(str(tags["GPS GPSLongitude"]))
+                            * float(
+                                1.0
+                                if str(tags.get("GPS GPSLongitudeRef", "E")) == "E"
+                                else -1.0
+                            ),
                         )
-                        del info["GPSAltitudeRef"]
+                        # 获取实体地址
+                        # info["address"] = address(info["GPS"])
+                        # 获取照片海拔高度
+                        if "GPS GPSAltitudeRef" in tag_keys:
+                            try:
+                                info["GPSAltitude"] = eval(info["GPSAltitude"])
+                            except ZeroDivisionError:
+                                info["GPSAltitude"] = 0
+                            info["GPSAltitude"] = "距%s%.2f米" % (
+                                "地面" if int(info["GPSAltitudeRef"]) == 1 else "海平面",
+                                info["GPSAltitude"],
+                            )
+                            del info["GPSAltitudeRef"]
 
-                    time_item = list(set(config.time_list) & set(tag_keys))
-                    if time_item:
-                        info["Dates"] = str(tags[time_item[0]])
+                        time_item = list(set(config.time_list) & set(tag_keys))
+                        if time_item:
+                            info["Dates"] = str(tags[time_item[0]])
+                    else:
+                        return
                 else:
                     return
-            else:
-                return
-        self.res_pools[hashlib.new("md5", path.encode()).hexdigest()] = info
+            self.res_pools[hashlib.new("md5", path.encode()).hexdigest()] = info
+        except Exception as e:
+            error(e)
 
     async def find_address(self, key: str, item: dict) -> None:
         async with self.limit:

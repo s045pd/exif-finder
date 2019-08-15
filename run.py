@@ -87,7 +87,7 @@ class Finder:
                             except ZeroDivisionError:
                                 info["GPSAltitude"] = 0
                             info["GPSAltitude"] = "距%s%.2f米" % (
-                                "地面" if int(float(info["GPSAltitudeRef"])) == 1 else "海平面",
+                                "地面" if int(eval(str(info["GPSAltitudeRef"]))) == 1 else "海平面",
                                 info["GPSAltitude"],
                             )
                             del info["GPSAltitudeRef"]

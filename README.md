@@ -1,3 +1,4 @@
+<center><img src="media/eye.jpg"/></center>
 <center><h1>EXIF-Finder</h1></center>
 
 这是一个用于检索出相册中留存有GPS定位信息图像的工具，且用法很简单。只需要输入如下命令即可
@@ -56,3 +57,8 @@ python3 run.py -t [path]
 
 ```
 
+### 对一次女装图集的分析结果
+
+图集项目地址: [https://github.com/komeiji-satori/Dress](https://github.com/komeiji-satori/Dress)
+
+![media/demo_map.png](media/demo_map.png)

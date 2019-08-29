@@ -5,6 +5,8 @@ __pycache__/
 celery.info
 ghostdriver.log
 
+*.ipynb
+events/
 testspace/
 
 res.json

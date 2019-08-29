@@ -19,7 +19,8 @@ class Config:
     location = False
     conns = 20
     target_path = ""
-    save_path = ""
+    save_image = False
+    analysis = False
 
     show_list = [
         "GPS GPSDOP",

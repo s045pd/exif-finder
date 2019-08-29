@@ -84,6 +84,8 @@ def checkPath(path):
 def initPath(path):
     if not checkPath(path):
         os.makedirs(path)
+        path += " [created!]"
+    return path
 
 
 def make_chunk(datas, length=512):
@@ -98,3 +100,45 @@ def make_chunk(datas, length=512):
                 data = None
                 break
         yield chunk
+
+
+def make_popup(item):
+
+    add_normal = (
+        lambda data, dicts: f"<p>{data[1]}: {dicts[data[0]]}</p>"
+        if data[0] in dicts
+        else ""
+    )
+    # {
+    #     "path": "/Users/s045pd/Desktop/Dress-master/G4Y8u9/11.jpg",
+    #     "Dates": "2017:09:28",
+    #     "GPSAltitude": "距海平面0.00米",
+    #     "Make": "Xiaomi",
+    #     "Model": "Redmi Note 4",
+    #     "Software": "MediaTek Camera Application",
+    #     "GPS": [
+    #         39.91360472222222,
+    #         116.55191038888888
+    #     ],
+    #     "address": "北京市朝阳区三间房镇定福庄西里1号院定福庄西里1号院南区"
+    # },
+    html = ""
+    cols = (
+        ("address", "地址"),
+        ("Make", "设备"),
+        ("Model", "型号"),
+        ("Software", "编辑软件"),
+        ("GPSAltitude", "高度"),
+    )
+    if "path" in item:
+        html += '<center><p> <a href="{}">{}</a ></p></center>'.format(
+            item["path"], item["path"]
+        )
+    if "date" in item:
+        html += f"<center><p>{item['date']}</p></center>"
+    # if "GPS" in item:
+    #     html += f"<p>{item['GPS']}</p>"
+    if "path" in item:
+        html += "<img src='{}' height='240' width='240' />".format(item["path"])
+    html += "".join([add_normal(_, item) for _ in cols])
+    return html

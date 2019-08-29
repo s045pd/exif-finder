@@ -10,6 +10,16 @@ python3 run.py -t [path]
 如果您需要(-l 参数)或许定位地区的中文名称，您就需要提前到`restapi.amap.com`站点申请一个自己的`key`并填入`conf.py`中。
 
 
+### 参数说明:
+
+- `-t`: 指定相册地址【必要参数】
+- `-s`: 指定图片存储文件夹名
+- `-l`: 开启地理定位附近位置查询功能
+- `-a`: 开启地图投影功能，默认添加图片存储地址为`image`
+- `--dark`: 开启暗黑地图模式
+- `--locus`: 开启标点轨迹【依据时间排布】
+
+
 ### 结果案例:
 
 ```json
@@ -57,7 +67,7 @@ python3 run.py -t [path]
 
 ```
 
-### 对一次女装图集的分析结果
+### 👯一次女装图集的分析结果
 
 图集项目地址: [https://github.com/komeiji-satori/Dress](https://github.com/komeiji-satori/Dress)
 

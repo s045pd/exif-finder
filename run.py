@@ -173,7 +173,16 @@ class Finder:
 @click.option("-s", "--save_image", is_flag=True)
 @click.option("-l", "--location", is_flag=True)
 @click.option("-a", "--analysis", is_flag=True)
-def main(target_path: str, save_image: str, location: bool, analysis: bool):
+@click.option("--dark", is_flag=True)
+@click.option("--locus", is_flag=True)
+def main(
+    target_path: str,
+    save_image: str,
+    location: bool,
+    analysis: bool,
+    dark: bool,
+    locus: bool,
+):
     if target_path:
         click.echo(f"搜索路径={target_path}")
         config.target_path = target_path
@@ -187,6 +196,10 @@ def main(target_path: str, save_image: str, location: bool, analysis: bool):
         click.echo(f"是否分析结果={analysis}")
         config.analysis = analysis
         config.save_image = True
+    if dark:
+        config.dark_mode = dark
+    if locus:
+        config.locus = locus
     Finder().run()
 
 

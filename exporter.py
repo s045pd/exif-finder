@@ -7,6 +7,9 @@ from log import success
 from common import checkTimes, make_popup
 import folium
 from folium import plugins
+from conf import config
+import webbrowser
+import pathlib
 
 
 def create_xlsx(datas, columns, filename="res.xlsx"):
@@ -25,7 +28,7 @@ def create_json(datas, filename="res.json"):
 
 
 def analysis(data, filename="map.html"):
-    map = folium.Map([30, 120], zoom_start=5)
+    map = folium.Map([30, 120], world_copy_jump=False, no_wrap=True, zoom_start=5)
     locations = []
     popups = []
     for item in data:
@@ -33,21 +36,14 @@ def analysis(data, filename="map.html"):
         popups.append(
             folium.Popup(make_popup(item), parse_html=False, max_width="100%")
         )
-
-    # locations = [item["GPS"] for item in data]
-    # folium.plugins.AntPath(
-    #     locations,
-    #     reverse='True',
-    #     dash_array=[20, 30]
-    # ).add_to(map)
-    # for item in data:
-    #     folium.Marker(
-    #         location=item["GPS"],
-    #         popup=folium.Popup(make_popup(item), parse_html=False, max_width="100%"),
-    #     ).add_to(map)
-
+    if config.locus:
+        folium.plugins.AntPath(locations, reverse="True", dash_array=[20, 30]).add_to(
+            map
+        )
     map.add_child(folium.LatLngPopup())
     plugins.MarkerCluster(locations, popups=popups).add_to(map)
-    # folium.TileLayer('cartodbdark_matter').add_to(map)
+    if config.dark_mode:
+        folium.TileLayer("cartodbdark_matter").add_to(map)
     map.fit_bounds(map.get_bounds())
     map.save(filename)
+    webbrowser.open(pathlib.Path(filename).absolute().as_uri())

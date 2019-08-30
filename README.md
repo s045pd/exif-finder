@@ -24,45 +24,34 @@ python3 run.py -t [path]
 
 ```json
 [
+
     {
-        "path": "../screen_shot/21012_1.png",
-        "GPSAltitude": "距海平面25.05米",
-        "Make": "Apple",
-        "Model": "iPhone 4",
-        "Software": "Adobe Photoshop CS5 Windows",
+        "path": "images/38.jpg",
+        "date": "2016-06-21 23:10:27",
+        "GPSAltitude": "距海平面0.00米",
+        "Make": "Xiaomi",
+        "Model": "MI 5",
+        "Software": "gemini-user 6.0 MRA, ... ]",
         "GPS": [
-            31.224166666666665,
-            121.49383333333333
+            34.787079999999996,
+            113.63151497222222
         ],
-        "Dates": "2013:10:11 10:33:18",
-        "address": "上海市黄浦区豫园街道光启路74傅家街幼儿园(傅家街)"
+        "address": "河南省郑州市金水区南阳新村街道第九人民医院家属院"
     },
     {
-        "path": "../screen_shot/21012_2.png",
-        "GPSAltitude": "距海平面25.05米",
+        "path": "images/17.jpg",
+        "date": "2017-05-28 14:41:36",
+        "GPSAltitude": "距海平面89.37米",
         "Make": "Apple",
-        "Model": "iPhone 4",
-        "Software": "Adobe Photoshop CS5 Windows",
+        "Model": "iPhone 7",
+        "Software": "10.3.1",
         "GPS": [
-            31.224166666666665,
-            121.49383333333333
+            40.41302777777778,
+            116.67415555555556
         ],
-        "Dates": "2013:10:11 10:33:18",
-        "address": "上海市黄浦区豫园街道光启路74傅家街幼儿园(傅家街)"
-    },
-    {
-        "path": "../screen_shot/22323_0.png",
-        "GPSAltitude": "距海平面14.61米",
-        "Make": "Apple",
-        "Model": "iPhone 6",
-        "Software": "8.2",
-        "GPS": [
-            31.676894444444446,
-            119.9347138888889
-        ],
-        "Dates": "2015:10:13 16:08:18",
-        "address": "江苏省常州市武进区湖塘镇武宜中路98号"
+        "address": "北京市怀柔区怀北镇中国科学院大学雁栖湖校区公寓"
     }
+ 
 ]
 
 ```
@@ -72,3 +61,7 @@ python3 run.py -t [path]
 图集项目地址: [https://github.com/komeiji-satori/Dress](https://github.com/komeiji-satori/Dress)
 
 ![media/demo_map.png](media/demo_map.png)
+
+
+
+

@@ -143,7 +143,10 @@ def main(
         config.save_image = save_image
     if location:
         click.echo(f"是否定位地址={location}")
-        config.location = location
+        if config.rest_api_key:
+            config.location = location
+        else:
+            warning("You need create a api key at :https://lbs.amap.com/")
     if analysis:
         click.echo(f"是否分析结果={analysis}")
         config.analysis = analysis

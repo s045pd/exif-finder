@@ -1,9 +1,7 @@
 class Config:
 
     name = ""
-
-    key = ""
-    google_api_key = ""
+    rest_api_key = ""
     ua_list = [
         "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1",
         "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0",
@@ -16,30 +14,38 @@ class Config:
         "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; ja) Presto/2.10.289 Version/12.00",
         "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36",
     ]
-    types_filter = ["bmp", "jpg", "tiff", "gif", "png"]
+    types_filter = ["bmp", "jpeg", "jpg", "tiff", "gif", "png"]
     location = False
     conns = 20
     target_path = ""
     save_image = False
     analysis = False
 
+    dark_mode = False
+    locus = False
+
+    # key,nickname
     show_list = [
-        "GPS GPSDOP",
-        "GPS GPSMeasureMode",
-        "GPS GPSAltitudeRef",
-        "GPS GPSAltitude",
-        "Image Software",
-        "Image Model",
-        "Image Make",
-        "Text Layer Name",
+        ("GPS GPSDOP", "dop"),
+        ("GPS GPSMeasureMode", "mode"),
+        ("Image Software", "soft"),
+        ("Image Model", "model"),
+        ("Image Make", "make"),
+        ("Text Layer Name", "text"),
     ]
-    x_and_y_list = ["GPS GPSLatitude", "GPS GPSLongitude"]
-    time_list = [
+    gps_tag = (
+        (
+            ("GPS GPSLatitude", "GPS GPSLatitudeRef"),
+            ("GPS GPSLongitude", "GPS GPSLongitudeRef"),
+        ),
+    )
+    alt_tag = ("GPS GPSAltitudeRef", "GPS GPSAltitude")
+    time_list = (
         "EXIF DateTimeDigitized",
         "EXIF DateTimeOriginal",
         "Image DateTime",
         "GPS GPSDate",
-    ]
+    )
 
     status = {"success": 0, "failed": 0, "total": 0, "updated": 0}
 

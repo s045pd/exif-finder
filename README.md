@@ -25,31 +25,37 @@ python3 run.py -t [path]
 ```json
 [
 
-    {
-        "path": "images/38.jpg",
-        "date": "2016-06-21 23:10:27",
-        "GPSAltitude": "距海平面0.00米",
-        "Make": "Xiaomi",
-        "Model": "MI 5",
-        "Software": "gemini-user 6.0 MRA, ... ]",
-        "GPS": [
-            34.787079999999996,
+  {
+        "path": "images/34.jpg",
+        "date": "2016-06-21",
+        "gps": [
+            34.78708,
             113.63151497222222
         ],
+        "alt": [
+            0,
+            "海平面"
+        ],
+        "soft": "gemini-user 6.0 MRA58K V7.3.10.0.MAACNDD release-keys",
+        "model": "MI 5",
+        "make": "Xiaomi",
         "address": "河南省郑州市金水区南阳新村街道第九人民医院家属院"
     },
     {
-        "path": "images/17.jpg",
-        "date": "2017-05-28 14:41:36",
-        "GPSAltitude": "距海平面89.37米",
-        "Make": "Apple",
-        "Model": "iPhone 7",
-        "Software": "10.3.1",
-        "GPS": [
-            40.41302777777778,
-            116.67415555555556
+        "path": "images/0.jpg",
+        "date": "2016-07-20",
+        "gps": [
+            47.362586972222225,
+            123.91117858333334
         ],
-        "address": "北京市怀柔区怀北镇中国科学院大学雁栖湖校区公寓"
+        "alt": [
+            0,
+            "海平面"
+        ],
+        "soft": "Adobe Photoshop CC 2018 (Windows)",
+        "model": "m2 note",
+        "make": "Meizu",
+        "address": "黑龙江省齐齐哈尔市梅里斯达斡尔族区梅里斯乡浏园"
     }
  
 ]

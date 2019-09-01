@@ -1,5 +1,10 @@
-<center><img src="media/eye.jpg" width=250 height=250 /></center>
-<center><h1>EXIF-Finder</h1></center>
+<p align="center">
+    <img src="media/eye.jpg" width=250 height=250 />
+    <h1 align="center" >EXIF-Finder</h1>
+    <p align="center">Find out gps data by exif information accross the unprocessed photos</p>
+    <p align="center"> <a target="_blank" href="https://www.python.org/downloads/" title="Python version"><img src="https://img.shields.io/badge/python-%3E=_3.7.4-green.svg"></a>
+    <a target="_blank" href="LICENSE" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a></p>
+</p>
 
 这是一个用于检索出相册中留存有GPS定位信息图像的工具，且用法很简单。只需要输入如下命令即可
 
@@ -19,6 +24,12 @@ python3 run.py -t [path]
 - `--dark`: 开启暗黑地图模式
 - `--locus`: 开启标点轨迹【依据时间排布】
 
+
+### 安装:
+
+```
+pip install -r requirements.txt
+```
 
 ### 结果案例:
 

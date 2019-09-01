@@ -28,6 +28,8 @@ python3 run.py -t [path]
 ### 安装:
 
 ```
+git clone https://github.com/aoii103/exif-finder.git
+cd exif-finder
 pip install -r requirements.txt
 ```
 

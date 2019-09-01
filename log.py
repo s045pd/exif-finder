@@ -4,7 +4,6 @@ from termcolor import colored
 
 from conf import config
 
-
 logging.basicConfig(format="[%(asctime)s]%(message)s", level=logging.INFO)
 Loger = logging.getLogger(config.name)
 

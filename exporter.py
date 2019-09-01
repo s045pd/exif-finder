@@ -1,15 +1,14 @@
 import json
-
-import pandas
-
-from common import checkPath
-from log import success
-from common import checkTimes, make_popup
-import folium
-from folium import plugins
-from conf import config
-import webbrowser
 import pathlib
+import webbrowser
+
+import folium
+import pandas
+from folium import plugins
+
+from common import checkPath, checkTimes, make_popup
+from conf import config
+from log import success
 
 
 def create_xlsx(datas, columns, filename="res.xlsx"):
@@ -28,11 +27,13 @@ def create_json(datas, filename="res.json"):
 
 
 def analysis(data, filename="map.html"):
-    map = folium.Map([30, 120], world_copy_jump=False, no_wrap=True, zoom_start=5)
+    map = folium.Map(
+        [30, 120], world_copy_jump=False, detect_retina=True, no_wrap=True, zoom_start=5
+    )
     locations = []
     popups = []
     for item in data:
-        locations.append(item["GPS"])
+        locations.append(item["gps"])
         popups.append(
             folium.Popup(make_popup(item), parse_html=False, max_width="100%")
         )
